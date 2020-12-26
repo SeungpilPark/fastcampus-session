@@ -3,8 +3,10 @@ package com.fastcampus.session;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SessionApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SessionApplication.class, args);
+    new SpringApplicationBuilder()
+        .sources(SessionApplication.class)
+        .web(WebApplicationType.SERVLET)
+        .bannerMode(Banner.Mode.OFF)
+        .build()
+        .run(args);
   }
 
   @GetMapping(value = "/api/session")
