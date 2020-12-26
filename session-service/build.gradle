@@ -1,4 +1,5 @@
 bootJar {
+    launchScript()
     mainClassName('com.fastcampus.session.SessionApplication')
     archiveName('session-service.jar')
 }
